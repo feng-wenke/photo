@@ -20,7 +20,6 @@
             margin: 0;
             padding: 0;
             color: var(--text-color);
-            display: none; /* Initially hide the body */
         }
 
         .photo-wall {
@@ -53,46 +52,21 @@
 
 <div class="photo-wall">
     <!-- Repeat this block for each photo -->
-    <img src="1.jpg" alt="Photo 1" onclick="openModal(this)">
-    <img src="2.jpg" alt="Photo 2" onclick="openModal(this)">
-    <img src="3.jpg" alt="Photo 3" onclick="openModal(this)">
-    <img src="4.jpg" alt="Photo 4" onclick="openModal(this)">
-    <img src="5.jpg" alt="Photo 5" onclick="openModal(this)">
-    <img src="6.jpg" alt="Photo 6" onclick="openModal(this)">
-    <img src="7.jpg" alt="Photo 7" onclick="openModal(this)">
-    <img src="8.jpg" alt="Photo 8" onclick="openModal(this)">
+ <img src="1.jpg" alt="Photo 1" onclick="openModal(this)">
+ <img src="2.jpg" alt="Photo 2" onclick="openModal(this)">
+ <img src="3.jpg" alt="Photo 3" onclick="openModal(this)">
+ <img src="4.jpg" alt="Photo 4" onclick="openModal(this)">
+ <img src="5.jpg" alt="Photo 5" onclick="openModal(this)">
+ <img src="6.jpg" alt="Photo 6" onclick="openModal(this)">
+ <img src="7.jpg" alt="Photo 7" onclick="openModal(this)">
+ <img src="8.jpg" alt="Photo 8" onclick="openModal(this)">
+ 
     <!-- ... -->
 </div>
 
 <div class="footer">
     <p>&copy; 2025 Photo Wall. All rights reserved.</p>
 </div>
-
-<script>
-    // Function to check if all images are loaded
-    function areImagesLoaded() {
-        const images = document.querySelectorAll('.photo-wall img');
-        for (const image of images) {
-            if (!image.complete || image naturalWidth === 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // Function to show the body content
-    function showContent() {
-        document.body.style.display = 'block';
-    }
-
-    // Check if all images are loaded every 100ms
-    const intervalId = setInterval(() => {
-        if (areImagesLoaded()) {
-            clearInterval(intervalId);
-            showContent();
-        }
-    }, 100);
-</script>
 
 </body>
 </html>
