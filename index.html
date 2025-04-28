@@ -52,20 +52,50 @@
 
 <div class="photo-wall">
     <!-- Repeat this block for each photo -->
- <img src="1.jpg" alt="Photo 1" onclick="openModal(this)">
- <img src="2.jpg" alt="Photo 2" onclick="openModal(this)">
- <img src="3.jpg" alt="Photo 3" onclick="openModal(this)">
- <img src="4.jpg" alt="Photo 4" onclick="openModal(this)">
- <img src="6.jpg" alt="Photo 6" onclick="openModal(this)">
- <img src="7.jpg" alt="Photo 7" onclick="openModal(this)">
- <img src="8.jpg" alt="Photo 8" onclick="openModal(this)">
- <img src="5.jpg" alt="Photo 9" onclick="openModal(this)">
+    <img src="placeholder.jpg" data-src="1.jpg" alt="Photo 1" onclick="openModal(this)" class="lazy-load">
+    <img src="placeholder.jpg" data-src="2.jpg" alt="Photo 2" onclick="openModal(this)" class="lazy-load">
+    <img src="placeholder.jpg" data-src="3.jpg" alt="Photo 3" onclick="openModal(this)" class="lazy-load">
+    <img src="placeholder.jpg" data-src="4.jpg" alt="Photo 4" onclick="openModal(this)" class="lazy-load">
+    <img src="placeholder.jpg" data-src="6.jpg" alt="Photo 6" onclick="openModal(this)" class="lazy-load">
+    <img src="placeholder.jpg" data-src="7.jpg" alt="Photo 7" onclick="openModal(this)" class="lazy-load">
+    <img src="placeholder.jpg" data-src="8.jpg" alt="Photo 8" onclick="openModal(this)" class="lazy-load">
+    <img src="placeholder.jpg" data-src="5.jpg" alt="Photo 9" onclick="openModal(this)" class="lazy-load">
     <!-- ... -->
 </div>
 
 <div class="footer">
     <p>&copy; 2025 Photo Wall. All rights reserved.</p>
 </div>
+
+<script>
+// Lazy loading images
+document.addEventListener("DOMContentLoaded", function() {
+    var lazyImages = [].slice.call(document.querySelectorAll("img.lazy-load"));
+
+    if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.classList.remove("lazy-load");
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        lazyImages.forEach(function(lazyImage) {
+            lazyImage.src = lazyImage.dataset.src;
+            lazyImage.classList.remove("lazy-load");
+        });
+    }
+});
+</script>
 
 </body>
 </html>
