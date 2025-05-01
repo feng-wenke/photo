@@ -124,28 +124,28 @@
         }
         
         .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            position: relative;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            width: 100%;
-        }
-        
-        .dot {
-            flex: 1;
-            height: 8px;
-            background: #717171;
-            border-radius: 0;
-            cursor: pointer;
-            transition: background-color 0.6s ease;
-            margin: 0 2px;
-        }
-        
-        .dot.active {
-            background: var(--primary-color);
-            height: 12px;
-        }
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #717171;
+    border-radius: 50%; /* 使其成为圆形 */
+    cursor: pointer;
+    transition: background-color 0.6s ease;
+    margin: 0 5px; /* 调整间距 */
+}
+
+.dot.active {
+    background: green; /* 激活状态的颜色为绿色 */
+}
+
     </style>
 </head>
 
@@ -263,6 +263,7 @@
                 dotsContainer.appendChild(dot);
             });
         }
+
 
         // 切换幻灯片
         function goToSlide(index) {
